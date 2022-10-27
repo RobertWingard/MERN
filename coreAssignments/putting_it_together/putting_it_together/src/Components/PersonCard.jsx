@@ -23,7 +23,7 @@ class PersonCard extends React.Component{
             <h3>Hair Color: {this.props.hairColor}</h3> 
             </div>
 
-            <button onClick={this.update}> Increase { this.props.firstName } { this.props.lastName } </button>
+            <button className="btn btn-secondary" onClick={this.update}> Increase { this.props.firstName } { this.props.lastName } </button>
         </>
         )
     }
