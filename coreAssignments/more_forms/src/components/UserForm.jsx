@@ -39,7 +39,7 @@ const UserForm = (props) => {
             ...inputs,
             [e.target.name]: e.target.value
         })
-        if(e.target.value.length < 3){
+        if(e.target.value.length < 3 && e.target.value.length != 0){
             setError({
                 ...formError,
                 [e.target.name]: "must be more than 3"
@@ -48,7 +48,8 @@ const UserForm = (props) => {
             setError({
                 ...formError,
                 [e.target.name]: ("")
-            })
+            }
+            )
         }
     }
         // setInputs(e.target.value);
@@ -74,35 +75,35 @@ const UserForm = (props) => {
             <form>
                 <div>
                     <label>First Name: </label>
-                    <input name="firstName" type="text" onChange={handleChange} value={inputs.firstName} />
+                    <input name="firstName" type="text" onChange={handleChange} value={inputs.firstName} placeholder="Please type first name " />
                     {
                         <p style={{ color: 'red' }}>{formError.firstName}</p>
                     }
                 </div>
                 <div>
                     <label>Last Name: </label>
-                    <input name="lastName" type="text" onChange={handleChange} value={inputs.lastName} />
+                    <input name="lastName" type="text" onChange={handleChange} value={inputs.lastName} placeholder="Please type last name " />
                     {
                         formError.lastName ? <p style={{ color: 'red' }}>{formError.lastName}</p> : ''
                     }
                 </div>
                 <div>
                     <label>Email Address: </label>
-                    <input name="email" type="text" onChange={handleChange} value={inputs.email} />
+                    <input name="email" type="text" onChange={handleChange} value={inputs.email} placeholder="Please type email" />
                     {
                         formError.email ? <p style={{ color: 'red' }}>{formError.email}</p> : ''
                     }
                 </div>
                 <div>
                     <label>Password: </label>
-                    <input name= "password" type="password" onChange={handleChange} value={inputs.password} />
+                    <input name= "password" type="password" onChange={handleChange} value={inputs.password} placeholder="Make it something secret" />
                     {
                         formError.password ? <p style={{ color: 'red' }}>{formError.password}</p> : ''
                     }
                 </div>
                 <div>
                     <label>Confirm Password: </label>
-                    <input name= "confirmPassword" type="password" onChange={handleChange} value={inputs.confirm_password} />
+                    <input name= "confirm_password" type="password" onChange={handleChange} value={inputs.confirm_password} />
                 </div>
 
             </form>
