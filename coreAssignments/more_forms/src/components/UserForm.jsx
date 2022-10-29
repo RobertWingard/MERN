@@ -10,7 +10,7 @@ const UserForm = (props) => {
     // const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
     // const [error, setError] = useState("");
 
-    const[inputs,setInputs] = useState({
+    const [inputs, setInputs] = useState({
         firstName: "",
         lastName: "",
         email: "",
@@ -19,7 +19,7 @@ const UserForm = (props) => {
         hasBeenSubmitted: "",
     })
 
-    const[formError, setError] = useState({
+    const [formError, setError] = useState({
         firstName: "",
         lastName: "",
         email: "",
@@ -27,7 +27,19 @@ const UserForm = (props) => {
         confirm_password: "",
         hasBeenSubmitted: "",
     })
-
+    // const confirm = (e) => {
+    //     if(e.target.value === inputs.password){
+    //         setError({
+    //             ...formError,
+    //             confirm_password: "",
+    //         })
+    //     }else{
+    //         setError({
+    //             ...formError,
+    //             [e.target.name]: "Must match Password"
+    //         })
+    //     }
+    // }
     // const createUser = (e) => {
     //     e.preventDefault();
     //     const newUser = { firstName, lastName, email, password, confirm_password };
@@ -39,28 +51,69 @@ const UserForm = (props) => {
             ...inputs,
             [e.target.name]: e.target.value
         })
-        if(e.target.value.length < 3 && e.target.value.length != 0){
-            setError({
-                ...formError,
-                [e.target.name]: "must be more than 3"
-            })
-        }else{
-            setError({
-                ...formError,
-                [e.target.name]: ("")
+        // console.log(e.target.name)
+        if (e.target.name === "firstName" || e.target.name === "lastName") {
+            if (e.target.value.length < 3 && e.target.value.length !== 0) {
+                setError({
+                    ...formError,
+                    [e.target.name]: "must be more than 3 characters"
+                })
+            } else {
+                setError({
+                    ...formError,
+                    [e.target.name]: ("")
+                }
+                )
             }
-            )
+        }
+        if (e.target.name === "email") {
+            if (e.target.value.length < 5 && e.target.value.length !== 0) {
+                setError({
+                    ...formError,
+                    [e.target.name]: "must be more than 5 characters"
+                })
+            } else {
+                setError({
+                    ...formError,
+                    [e.target.name]: ("")
+                }
+                )
+            }
+        } if (e.target.name === "password" || e.target.name === "confirm_password") {
+            if (e.target.value.length < 8 && e.target.value.length !== 0) {
+                console.log("check me here first")
+                setError({
+                    ...formError,
+                    [e.target.name]: "must be more than 8 characters"
+                })
+            } else if (inputs.password !== e.target.value) {
+                console.log("passwords dont match")
+                setError({
+                    ...formError,
+                    [e.target.name]: "passwords must match"
+                })
+            } else {
+                console.log("reset password")
+                setError({
+                    ...formError,
+                    password: "",
+                    confirm_password: "",
+                }
+                )
+            }
         }
     }
-        // setInputs(e.target.value);
-        // if (e.target.value.length < 1) {
-        //     setError("Name is required!");
-        // } else if (e.target.value.length < 3) {
-        //     setError("Name must by greated than 3 characters!");
-        // } else {
-        //     setError("");
-        // }
-    
+
+
+    // setInputs(e.target.value);
+    // if (e.target.value.length < 1) {
+    //     setError("Name is required!");
+    // } else if (e.target.value.length < 3) {
+    //     setError("Name must by greated than 3 characters!");
+    // } else {
+    //     setError("");
+    // }
+
 
 
     // const formMessage = () => {
@@ -77,7 +130,7 @@ const UserForm = (props) => {
                     <label>First Name: </label>
                     <input name="firstName" type="text" onChange={handleChange} value={inputs.firstName} placeholder="Please type first name " />
                     {
-                        <p style={{ color: 'red' }}>{formError.firstName}</p>
+                        formError.firstName ? <p style={{ color: 'red' }}>{formError.firstName}</p> : ''
                     }
                 </div>
                 <div>
@@ -96,14 +149,17 @@ const UserForm = (props) => {
                 </div>
                 <div>
                     <label>Password: </label>
-                    <input name= "password" type="password" onChange={handleChange} value={inputs.password} placeholder="Make it something secret" />
+                    <input name="password" type="password" onChange={handleChange} value={inputs.password} placeholder="Make it something secret" />
                     {
                         formError.password ? <p style={{ color: 'red' }}>{formError.password}</p> : ''
                     }
                 </div>
                 <div>
                     <label>Confirm Password: </label>
-                    <input name= "confirm_password" type="password" onChange={handleChange} value={inputs.confirm_password} />
+                    <input name="confirm_password" type="password" onChange={handleChange} value={inputs.confirm_password} />
+                    {
+                        formError.password ? <p style={{ color: 'red' }}>{formError.confirm}</p> : ''
+                    }
                 </div>
 
             </form>
