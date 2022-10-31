@@ -7,9 +7,10 @@ function handleTodoClick() {
 
     return (
         <div>
-            <label>
-                <input type="checkbox" checked={todo.complete} onChange={handleTodoClick}/>
-                {todo.name}
+            <label className='flex' >
+                <input  type="checkbox"  checked={todo.complete} onChange={handleTodoClick}/>
+                <p>{todo.name}</p>
+                
             </label>
         </div>
     )
