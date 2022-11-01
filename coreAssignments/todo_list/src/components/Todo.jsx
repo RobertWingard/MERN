@@ -9,7 +9,7 @@ function handleTodoClick() {
         <div>
             <label className='flex' >
                 <input  type="checkbox"  checked={todo.complete} onChange={handleTodoClick}/>
-                <p>{todo.name}</p>
+                <p style={{textDecoration: "line"}}>{todo.name}</p>
                 
             </label>
         </div>

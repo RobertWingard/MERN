@@ -21,9 +21,11 @@ const Form = (props) => {
         <form onSubmit={createBox}>
             <div>
                 <label htmlFor="color">Color</label>
-                <input onChange={onChange} type="text" name="color" />
+                <input onChange={onChange} type="text"  name="color" />
+                <input onChange={onChange} type="color"  name="color" />
+
                 <label htmlFor="size">Size</label>
-                <input onChange={onChange} type="text" name="size" />
+                <input onChange={onChange} type="number" name="size" />
                 <button value="color">Add</button>
             </div>
         </form>

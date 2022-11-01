@@ -7,3 +7,12 @@
   justify-content: center;
 }
 
+/* how to put strike through this mofo 
+
+something that conditionally renders if its checked.
+
+*/
+
+.line {
+  text-decoration: line-through;
+}
