@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css';
 import axios from 'axios';
 
@@ -6,6 +6,11 @@ import axios from 'axios';
 function App() {
 
   const [pokemon, setPokemon] = useState([])
+
+  // useEffect
+  useEffect(() => {
+    axiosPokemon();
+  }, [])
 
 // vanilla fetch
   const fetchPokemon = () => {
