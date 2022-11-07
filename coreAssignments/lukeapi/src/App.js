@@ -7,7 +7,7 @@ import { ErrorPage } from './components/ErrorPage';
 function App() {
   return (
     <div>
-      <h1>Welcome to the world</h1>
+      <h1>Please  Please  Please work.</h1>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/people/:id" element={<People />} />
